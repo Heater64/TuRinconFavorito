@@ -1,0 +1,33 @@
+<!-- diario.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario - Tu rincón favorito</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Mi diario no diario</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="playlist.html">Playlist</a></li>
+        <li><a href="diario.html" class="active">Diario</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="diario">
+    <h2>Escribe lo que sientas 📝</h2>
+    <textarea id="diario" placeholder="Aquí puedes escribir lo que quieras..."></textarea>
+    <button onclick="guardarDiario()">Guardar</button>
+  </main>
+  <footer>
+    <p>&copy; 2025 Tu rincón favorito</p>
+  </footer>
+</body>
+</html>

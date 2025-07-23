@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlist - Tu rincón favorito</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>Playlist</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="playlist.html" class="active">Playlist</a></li>
+        <li><a href="diario.html">Diario</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Mis Melodías Favoritas 🎶</h2>
+    <div class="playlist-container">
+
+
+      <div class="player-controls-top">
+        <img id="current-song-cover" src="images/default-cover.jpg" alt="Portada del álbum" class="song-cover">
+        <div class="song-info">
+          <div id="now-playing">Reproduciendo: Nada</div>
+          <div class="song-details">
+            <span id="current-song-title" class="current-title"></span> -
+            <span id="current-song-artist" class="current-artist"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="audio-player-wrapper">
+        <audio id="audio-player"></audio> <div class="controls-bar">
+          <button id="prev-btn" aria-label="Anterior"><i class="fas fa-backward"></i></button>
+          <button id="play-pause-btn" aria-label="Reproducir/Pausar"><i class="fas fa-play"></i></button>
+          <button id="next-btn" aria-label="Siguiente"><i class="fas fa-forward"></i></button>
+
+          <div class="time-display">
+            <span id="current-time">0:00</span> / <span id="duration-time">0:00</span>
+          </div>
+
+          <input type="range" id="progress-bar" value="0" max="100">
+
+          <div class="volume-control">
+            <button id="mute-btn" aria-label="Silenciar/Activar volumen"><i class="fas fa-volume-up"></i></button>
+            <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="1">
+          </div>
+
+          <button id="shuffle-btn" aria-label="Reproducción aleatoria"><i class="fas fa-random"></i></button>
+          <button id="repeat-btn" aria-label="Repetir"><i class="fas fa-redo-alt"></i></button>
+        </div>
+      </div>
+
+      <ul id="music-list">
+        <li class="playlist-item"
+            data-src="d:\Darwin\Music\Trueno - REAL GANGSTA LOVE (Official Video).m4a"
+            data-title="REAL GANGSTA LOVE"
+            data-artist="Trueno"
+            data-cover="data:image/jpeg;base64,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"
+            tabindex="0">
+          <div class="item-info">
+            <span class="song-title">REAL GANGSTA LOVE</span> - <span class="song-artist">Trueno</span>
+          </div>
+          <button class="item-play-btn" aria-label="Reproducir canción"><i class="fas fa-play"></i></button>
+        </li>
+        <li class="playlist-item"
+            data-src="d:\Darwin\Music\Beéle, Westcol, Ovy On The Drums - LA PLENA (W Sound 05).m4a"
+            data-title="LA PLENA"
+            data-artist="Beéle, Westcol, Ovy On The Drums"
+            data-cover="https://i.scdn.co/image/ab67616d0000b2734740100d84f3667f1eae6870"
+            tabindex="0">
+          <div class="item-info">
+            <span class="song-title">LA PLENA</span> - <span class="song-artist">Beéle, Westcol, Ovy On The Drums</span>
+          </div>
+          <button class="item-play-btn" aria-label="Reproducir canción"><i class="fas fa-play"></i></button>
+        </li>
+        
+        </ul>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Tu rincón favorito</p>
+  </footer>
+
+  <script src="playlist.js"></script>
+</body>
+</html>

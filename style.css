@@ -1,0 +1,693 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(to bottom right, #ffe6f0, #fff);
+  color: #000;
+  animation: fadeIn 1s ease-in;
+  min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la vista */
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+header {
+  background-color: #000;
+  color: #ffc0cb;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  margin: 0;
+  animation: slideDown 0.8s ease-out;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+nav a {
+  color: #ffc0cb;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s;
+  padding: 0.5rem 1rem; /* Añadido para hacer el área de clic más grande */
+  border-radius: 5px;
+}
+
+nav a.active, nav a:hover {
+  color: #fff;
+  transform: scale(1.1);
+  text-shadow: 0 0 8px #ffc0cb;
+  background-color: rgba(255, 192, 203, 0.2); /* Fondo suave al pasar el ratón */
+}
+
+main {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  animation: fadeIn 1s ease-in;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  flex-grow: 1; /* Permite que el main ocupe el espacio restante */
+  margin-top: 2rem; /* Espacio superior */
+  margin-bottom: 2rem; /* Espacio inferior */
+}
+
+.avatar {
+  display: block;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 2rem auto;
+  border: 5px solid #ffc0cb;
+  box-shadow: 0 0 12px rgba(255,192,203,0.6);
+  transition: transform 0.3s;
+}
+
+.avatar:hover {
+  transform: rotate(-3deg) scale(1.05);
+}
+
+h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  text-align: center;
+  color: #cc0066;
+  margin-bottom: 1rem;
+  position: relative; /* Para el efecto de subrayado */
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #ffc0cb;
+  border-radius: 5px;
+}
+
+ul {
+  list-style-type: '💖 '; /* Corazón como viñeta */
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+textarea {
+  width: 100%;
+  height: 220px;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid #ffc0cb;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  resize: vertical;
+  background-color: #fff0f5;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+button {
+  padding: 0.75rem 2rem;
+  background-color: #ffc0cb;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: block; /* Para centrarlo mejor si es necesario */
+  margin: 0 auto; /* Para centrar el botón */
+}
+
+button:hover {
+  background-color: #ff99bb;
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #000;
+  color: #ffc0cb;
+  margin-top: auto; /* Empuja el footer hacia abajo */
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
+}
+
+iframe {
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  width: 100%; /* Para que sea responsive */
+  height: 315px; /* Altura estándar de YouTube */
+}
+
+/* --- Estilos de la Galería de Imágenes --- */
+
+.grid-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Más flexible para pantallas pequeñas */
+  gap: 1.5rem;
+  margin-top: 2rem;
+  transition: opacity 0.5s ease-in-out; /* Transición para cuando aparezcan las nuevas imágenes */
+}
+
+.galeria-item {
+  background-color: #fff0f5;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: scale(1);
+  transition: transform 0.4s ease, box-shadow 0.3s ease, opacity 0.5s ease-in-out; /* Añadida transición para opacidad */
+  cursor: pointer; /* Indica que se puede hacer clic */
+  position: relative;
+  opacity: 0; /* Inicialmente oculto para animación de entrada */
+  animation: itemFadeIn 0.8s forwards; /* Animación de entrada */
+}
+
+/* Animación para los elementos de la galería */
+@keyframes itemFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Retraso para animar los items uno a uno (opcional, se puede controlar con JS) */
+.galeria-item:nth-child(1) { animation-delay: 0.1s; }
+.galeria-item:nth-child(2) { animation-delay: 0.2s; }
+.galeria-item:nth-child(3) { animation-delay: 0.3s; }
+.galeria-item:nth-child(4) { animation-delay: 0.4s; }
+.galeria-item:nth-child(5) { animation-delay: 0.5s; }
+.galeria-item:nth-child(6) { animation-delay: 0.6s; }
+.galeria-item:nth-child(7) { animation-delay: 0.7s; }
+.galeria-item:nth-child(8) { animation-delay: 0.8s; }
+/* Añadir más si hay más ítems iniciales */
+
+
+.galeria-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255,192,203,0.4);
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 3px solid #ffc0cb;
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.galeria-item img:hover {
+  filter: brightness(1.1) saturate(1.2);
+  transform: scale(1.02); /* Pequeño zoom al pasar el ratón */
+}
+
+.galeria-item p {
+  margin: 0.8rem 0 0;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+  color: #cc0066;
+}
+
+/* Clase para ocultar o mostrar las imágenes adicionales */
+.additional-images.hidden {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.additional-images.visible {
+  opacity: 1;
+  height: auto;
+  margin-top: 2rem;
+  animation: fadeIn 1s ease-in forwards; /* Animación de aparición para el contenedor */
+}
+
+
+/* --- Lightbox --- */
+.lightbox {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Posición fija para cubrir toda la pantalla */
+  z-index: 2000; /* Por encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Habilitar scroll si la imagen es muy grande */
+  background-color: rgba(0,0,0,0.9); /* Fondo oscuro semitransparente */
+  justify-content: center; /* Centrar contenido */
+  align-items: center; /* Centrar contenido */
+  animation: fadeIn 0.3s ease-in; /* Animación de entrada para el lightbox */
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  max-width: 90%; /* Ancho máximo */
+  max-height: 85%; /* Altura máxima */
+  object-fit: contain; /* Asegura que la imagen se vea completa */
+  animation: zoomIn 0.4s ease-out; /* Animación para la imagen */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 192, 203, 0.6);
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: #ffc0cb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#lightbox-caption {
+  margin-top: 15px;
+  text-align: center;
+  color: #ccc;
+  font-size: 1.2rem;
+  padding: 8px 0;
+  font-family: 'Dancing Script', cursive;
+}
+
+.prev-btn, .next-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.prev-btn {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.next-btn {
+  right: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: rgba(255,192,203,0.8);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem; /* Reduce el padding del header en pantallas medianas */
+  }
+
+  header h1 {
+    font-size: 2.2rem; /* Reduce un poco más el tamaño del título */
+  }
+
+  nav ul {
+    flex-direction: column; /* Mantiene los ítems de navegación en columna */
+    gap: 0.5rem; /* Reduce el espacio entre ítems */
+    margin-top: 0.5rem; /* Reduce el margen superior */
+  }
+
+  nav a {
+    padding: 0.2rem 0.5rem; /* Reduce el padding de los enlaces de navegación */
+    font-size: 0.9rem; /* Opcional: reduce el tamaño de la fuente de los enlaces */
+  }
+
+  main {
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem; /* Ajusta el margen superior para que no choque con el header */
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .grid-galeria {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Más pequeñas en móviles */
+    gap: 1rem;
+  }
+
+  .galeria-item img {
+    height: 150px; /* Ajuste de altura para móviles */
+  }
+
+  .lightbox-content {
+    max-width: 95%;
+    max-height: 80%;
+  }
+
+  .close-btn {
+    font-size: 30px;
+    top: 10px;
+    right: 20px;
+  }
+
+  .prev-btn, .next-btn {
+    font-size: 16px;
+    padding: 10px;
+    margin-top: -30px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0.8rem; /* Aún más pequeño para móviles muy estrechos */
+  }
+  
+  header h1 {
+    font-size: 1.8rem; /* Título más pequeño aún */
+  }
+
+  nav ul {
+    gap: 0.3rem; /* Espacio mínimo */
+    margin-top: 0.3rem;
+  }
+
+  nav a {
+    font-size: 0.8rem; /* Enlaces aún más pequeños */
+    padding: 0.15rem 0.3rem;
+  }
+
+  main {
+    padding: 0.8rem;
+    margin-top: 0.8rem; /* Ajusta el margen superior */
+  }
+
+  .grid-galeria {
+    grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+    gap: 0.8rem;
+  }
+
+  .galeria-item img {
+    height: 200px; /* Un poco más grandes al ser una sola columna */
+  }
+}
+
+/* Clase para los paneles de categoría */
+.gallery-category-panel {
+  background-color: rgba(255, 250, 250, 0.95); /* Fondo ligeramente diferente para los paneles */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  padding: 2rem;
+  margin-top: 3rem;
+  animation: fadeIn 0.8s ease-out; /* Animación de entrada para el panel */
+  position: relative;
+}
+
+.gallery-category-panel h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #a00040; /* Color más oscuro para el título del panel */
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.gallery-category-panel h3::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: #ffc0cb;
+  border-radius: 5px;
+}
+
+
+/* Clases para ocultar/mostrar los paneles */
+.gallery-category-panel.hidden {
+  display: none; /* Oculta completamente el panel */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.gallery-category-panel.visible {
+  display: block; /* Muestra el panel */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* El botón de volver a la galería principal */
+.back-to-main {
+  display: block; /* Para que ocupe todo el ancho y se pueda centrar */
+  margin: 3rem auto 0; /* Margen superior y centrado */
+  padding: 0.8rem 2.5rem;
+  background-color: #cc0066; /* Un rosa más intenso */
+  color: #fff;
+  border-radius: 25px; /* Bordes más redondeados */
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.back-to-main:hover {
+  background-color: #a00040; /* Más oscuro al pasar el ratón */
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Ajustes para la galería principal cuando los paneles están activos */
+.main-gallery-hidden {
+    display: none; /* Oculta la galería principal */
+}
+/* --- CONTENEDOR GENERAL DE LA PLAYLIST --- */
+.playlist-container {
+  background-color: rgba(255, 250, 250, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(204, 0, 102, 0.15);
+  padding: 2rem;
+  margin-top: 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.playlist-container h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #cc0066;
+  font-family: 'Dancing Script', cursive;
+  margin-bottom: 2.5rem;
+}
+
+/* --- CADA CANCIÓN INDIVIDUAL --- */
+.song {
+  background: linear-gradient(135deg, #ffe6f0, #fff0f5);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.song:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(204, 0, 102, 0.25);
+}
+
+.song p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #440022;
+  margin-bottom: 0.8rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* --- ENVOLTURA DEL REPRODUCTOR PERSONALIZADO --- */
+.audio-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: #fff0f8;
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- BARRA DE PROGRESO DE AUDIO --- */
+.audio-progress {
+  width: 100%;
+  height: 6px;
+  appearance: none;
+  background: #e0e0e0;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.audio-progress::-webkit-slider-thumb,
+.audio-progress::-moz-range-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #cc0066;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+/* --- CONTROLES DE AUDIO COMO SPOTIFY --- */
+.audio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Grupo de botones centrado (⏮ ▶ ⏭) */
+.audio-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.audio-buttons button {
+  background-color: transparent;
+  border: none;
+  color: #cc0066;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.3s;
+}
+
+.audio-buttons button:hover {
+  transform: scale(1.2);
+  color: #b3005a;
+}
+
+/* Botón de play más grande */
+.audio-buttons button.play {
+  font-size: 2.2rem;
+}
+
+/* --- CONTROL DE VOLUMEN A LA DERECHA --- */
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.volume-slider {
+  width: 100px;
+  height: 5px;
+  appearance: none;
+  background: #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb,
+.volume-slider::-moz-range-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #cc0066;
+}
+
+/* --- INDICADOR DE CANCIÓN ACTIVA --- */
+.song.playing {
+  background-color: #ffccdd;
+  border: 2px solid #cc0066;
+  box-shadow: 0 4px 12px rgba(204, 0, 102, 0.2);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 600px) {
+  .playlist-container {
+    padding: 1.5rem;
+  }
+
+  .song {
+    padding: 1.2rem;
+  }
+
+  .song p {
+    font-size: 1.1rem;
+  }
+
+  .audio-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .volume-control {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .volume-slider {
+    width: 100%;
+  }
+}
