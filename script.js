@@ -196,3 +196,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // contenga las imágenes de la galería principal para la navegación inicial. ***
     updateActiveGalleryImages(mainGallery);
 });
+
+

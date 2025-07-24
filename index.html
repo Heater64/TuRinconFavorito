@@ -18,15 +18,31 @@
         <li><a href="playlist.html">Playlist</a></li>
         <li><a href="diario.html">Diario</a></li>
         <li><a href="blog.html">Blog</a></li>
+        <li><a href="sanpetersburgo.html">San Petersburgo</a></li>
+        <li><a href="recuerdos.html">Recuerdos</a></li>
+        <li><a href="memes.html">Memes</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="bienvenida">
-    <img src="https://photos.fife.usercontent.google.com/pw/AP1GczNADnFJJ1EsEqh6GwOmEsKX06cV0TVpShwgbKWHdzhI8g3slNy3SHGr=s0-d-I?authuser=0" alt="Avatar" class="avatar">
+    <img src="FotoAvatar/ELLA.jpeg" alt="Avatar" class="avatar">
     <h2>Bienvenida a tu rincón favorito</h2>
     <p>Hecho con amor, especialmente para ti 💖</p>
   </main>
+
+  <section class="mensajes-bonitos">
+  <h2>🌸 Mensajes Bonitos</h2>
+  <form id="form-mensaje">
+    <textarea id="nuevo-mensaje" placeholder="Escribe un mensaje bonito..." required></textarea>
+    <button type="submit">Guardar Mensaje</button>
+  </form>
+  <ul id="lista-mensajes"></ul>
+</section>
+
+  <!-- Scripts separados -->
+  <script src="mensajes.js"></script>
+  <script src="memes.js"></script>
 
   <footer>
     <p>&copy; 2025 Tu rincón favorito</p>

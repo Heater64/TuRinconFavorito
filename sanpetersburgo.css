@@ -1,0 +1,213 @@
+/* Galería de comida típica */
+.comida-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.comida-item {
+  text-align: center;
+  background: #fff0f5;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.comida-item:hover {
+  transform: translateY(-5px);
+}
+
+.comida-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.comida-item p {
+  margin: 0;
+  font-weight: bold;
+  color: #cc0066;
+}
+
+/* Galería de turismo */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.galeria img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.galeria img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Listas con emojis */
+.seccion ul {
+  padding-left: 1.2rem;
+  list-style: none;
+}
+
+.seccion ul li {
+  position: relative;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.seccion ul li::before {
+  content: "🌸";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Parrafos */
+.seccion p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #333;
+  padding: 0 0.5rem;
+}
+
+/* Títulos dentro de secciones */
+.seccion h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: #cc0066;
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.seccion h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #ffc0cb;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.card {
+  background-color: #fff0f5;
+  border-left: 5px solid #ffc0cb;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card.invertido {
+  border-left: none;
+  border-right: 5px solid #ffc0cb;
+  background-color: #ffeaf4;
+}
+
+.frases-lista {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.frases-lista li {
+  background-color: #fffafc;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid #ff99cc;
+  border-radius: 8px;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  font-size: 1.1rem;
+  color: #660033;
+}
+
+
+.comida-galeria, .galeria {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.comida-item {
+  width: 200px;
+  text-align: center;
+}
+
+.comida-item img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card {
+  background-color: #fffafc;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-left: 4px solid #ffb6c1;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 1rem 0;
+  object-fit: cover;
+  max-height: 250px;
+}
+
+.card.invertido {
+  border-left: none;
+  border-right: 4px solid #ffb6c1;
+  background-color: #ffeaf4;
+}
+
+.frases-lista {
+  list-style: none;
+  padding-left: 0;
+}
+
+.frases-lista li {
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  background-color: #fff0f5;
+  border-left: 4px solid #ff69b4;
+  border-radius: 8px;
+}
+
+.intro-foto {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.intro-foto img {
+  width: 100%;
+  height: 75vh; /* Alto visible en pantalla, puedes ajustar */
+  object-fit: cover;
+  display: block;
+  filter: brightness(95%);
+}
